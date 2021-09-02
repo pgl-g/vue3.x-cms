@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <h2>{$store.store.name}</h2>
+    <h2>{{ this.$store.state.name }}</h2>
     <router-link to="/login">登录</router-link>
     <router-link to="/main">首页</router-link>
     <router-view />
@@ -11,8 +11,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'App',
-  components: {}
+  name: 'App'
 })
 </script>
 
