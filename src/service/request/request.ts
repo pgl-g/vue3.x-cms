@@ -11,6 +11,7 @@ class pglRequest {
   loading?: ILoadingInstance
 
   constructor(config: pglRequestConfig) {
+    // 创建axios实例
     this.instance = axios.create(config)
     // this.showLoading = config.showLoading ?? true
     this.interceptors = config.interceptors
