@@ -13,7 +13,17 @@ app.mount('#app')
 
 pglRequest.request({
   url: '/home/multidata',
-  method: 'GET'
+  method: 'GET',
+  interceptors: {
+    requestInterceptors: (config) => {
+      console.log('单独请求的config')
+      return config
+    },
+    responseInterceptors: (res) => {
+      console.log('单独响应处理res')
+      return res
+    }
+  }
 })
 
 console.log(process.env.VUE_APP_BASE_URL, process.env.VUE_APP_BASE_NAME)
