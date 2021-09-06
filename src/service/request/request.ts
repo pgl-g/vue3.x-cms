@@ -8,7 +8,6 @@ class pglRequest {
   interceptors?: pglRequestInterceptors
 
   constructor(config: pglRequestConfig) {
-    console.log(config)
     this.instance = axios.create(config)
     this.interceptors = config.interceptors
     // 请求拦截 从config中取出的拦截器是对应实例的拦截器
