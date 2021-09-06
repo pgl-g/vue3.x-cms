@@ -10,4 +10,5 @@ export interface pglRequestInterceptors<T = AxiosResponse> {
 export interface pglRequestConfig<T = AxiosResponse>
   extends AxiosRequestConfig {
   interceptors?: pglRequestInterceptors<T> | undefined
+  // showLoading?: boolean
 }

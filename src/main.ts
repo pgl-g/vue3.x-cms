@@ -14,6 +14,7 @@ app.mount('#app')
 pglRequest.request({
   url: '/home/multidata',
   method: 'GET',
+  // showLoading: false,
   interceptors: {
     requestInterceptors: (config) => {
       console.log('单独请求的config')

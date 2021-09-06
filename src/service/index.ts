@@ -7,6 +7,11 @@ const PglRequest = new pglRequest({
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptors: (config) => {
+      // 携带token拦截
+      const token = ''
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
       console.log('请求成功拦截')
       return config
     },
