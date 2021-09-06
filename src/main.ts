@@ -11,7 +11,13 @@ app.use(router)
 app.use(store)
 app.mount('#app')
 
-pglRequest.request({
+interface DataType {
+  data: any
+  returnCode: string
+  success: boolean
+}
+
+pglRequest.request<DataType>({
   url: '/home/multidata',
   method: 'GET',
   // showLoading: false,

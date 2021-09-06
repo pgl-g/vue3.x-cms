@@ -64,21 +64,42 @@ class pglRequest {
     )
   }
   // 请求封装
-  request(config: pglRequestConfig): void {
-    if (config.interceptors?.requestInterceptors) {
-      config = config.interceptors.requestInterceptors(config)
-    }
-
-    // if (config.showLoading === false) {
-    //   this.showLoading = config.showLoading
-    // }
-
-    this.instance.request(config).then((res: any) => {
-      if (config.interceptors?.responseInterceptors) {
-        res = config.interceptors.responseInterceptors(res)
+  request<T>(config: pglRequestConfig): Promise<T> {
+    return new Promise((resolve, reject) => {
+      // 单个请求对数据处理
+      if (config.interceptors?.requestInterceptors) {
+        config = config.interceptors.requestInterceptors(config)
       }
-      console.log(res)
+
+      // if (config.showLoading === false) {
+      //   this.showLoading = config.showLoading
+      // }
+
+      this.instance
+        .request<any, T>(config)
+        .then((res: any) => {
+          if (config.interceptors?.responseInterceptors) {
+            res = config.interceptors.responseInterceptors(res)
+          }
+          resolve(res)
+        })
+        .catch((err) => {
+          reject(err)
+        })
     })
+  }
+
+  get<T>(config: pglRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'GET' })
+  }
+  post<T>(config: pglRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'POST' })
+  }
+  delete<T>(config: pglRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'DELETE' })
+  }
+  patch<T>(config: pglRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
 
