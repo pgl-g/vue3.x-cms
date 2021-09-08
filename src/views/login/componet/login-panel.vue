@@ -1,19 +1,15 @@
 <template>
-  <div class="app">
-    <router-view />
+  <div class="loginPanel">
+    <h1 class="title">pgl-admin</h1>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
 export default defineComponent({
-  name: 'App'
+  setup() {
+    return {}
+  }
 })
 </script>
-
-<style lang="less">
-.app {
-  height: 100%;
-}
-</style>
+<style lang="less" scoped></style>
