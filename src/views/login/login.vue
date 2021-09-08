@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <el-button>测试</el-button>
-  </div>
+  <div>login</div>
 </template>
 
 <script lang="ts">

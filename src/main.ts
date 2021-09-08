@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import { register } from './global'
 import pglRequest from './service'
+import 'normalize.css'
+import './assets/css/index.less'
 
 const app = createApp(App)
 register(app)
