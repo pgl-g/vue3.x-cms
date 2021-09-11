@@ -13,14 +13,15 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { rules } from '../config/account-config'
 import { ElForm } from 'element-plus'
 import localCache from '../../../unit/cache'
 export default defineComponent({
   setup() {
-    const store = useStore()
-
+    // const store = useStore()
+    const router = useRouter()
     const account = reactive({
       name: localCache.getCache('name') ?? '',
       password: localCache.getCache('password') ?? ' '
@@ -36,7 +37,9 @@ export default defineComponent({
             localCache.setCache('password', account.password)
           }
           // 2. 开始进行登录验证
-          store.dispatch('login/accountLoginAction', { ...account })
+          // store.dispatch('login/accountLoginAction', { ...account })
+          console.log('xxxx')
+          router.push('/main')
         }
       })
     }

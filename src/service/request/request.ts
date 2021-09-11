@@ -28,7 +28,6 @@ class pglRequest {
     // 添加所有的实例都有的拦截器
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('所有的实例都有的拦截器，请求拦截')
         // if (this.showLoading) {
         this.loading = ElLoading.service({
           lock: true,
@@ -43,21 +42,13 @@ class pglRequest {
     )
     this.instance.interceptors.response.use(
       (res) => {
-        console.log('所有的实例都有的拦截器，响应拦截')
         // 将loading移除
         this.loading?.close()
 
         const data = res.data
-        if (data.returnCode === '-1001') {
-          console.log('请求失败～,错误信息')
-        } else {
-          return data
-        }
+        return data
       },
       (err) => {
-        if (err.response.status === 404) {
-          console.log('404错误信息～')
-        }
         // 将loading移除
         this.loading?.close()
         return err
