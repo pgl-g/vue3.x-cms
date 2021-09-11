@@ -7,7 +7,11 @@ import {
   ElInput,
   ElLink,
   ElTabPane,
-  ElTabs
+  ElTabs,
+  ElContainer,
+  ElAside,
+  ElHeader,
+  ElMain
 } from 'element-plus'
 import { App } from 'vue'
 
@@ -20,7 +24,11 @@ const components = [
   ElInput,
   ElButton,
   ElCheckbox,
-  ElLink
+  ElLink,
+  ElContainer,
+  ElAside,
+  ElHeader,
+  ElMain
 ]
 export function register(app: App) {
   for (const component of components) {
